@@ -9,8 +9,63 @@ let jokes = {
     joke7: ['Iam', 'I You don\'t know who you are?']
 }
 
-// Make a random number to be able to choose a joke
+// Set up a variable to choose a random number between 0 and 7
 let randNum = Math.floor(Math.random() * 7)
+
+// Created a function to choose a day of the week.
+let dayOfWeek = [];
+function getDay(day) {
+    day = randNum; 
+    if (day === 0) {
+        dayOfWeek = 'Sunday';
+    } else if (day === 1) {
+        dayOfWeek = 'Monday';
+    } else if (day === 2) {
+        dayOfWeek = 'Tuesday';
+    } else if (day === 3) {
+        dayOfWeek = 'Wednesday';
+    } else if(day === 4) {
+        dayOfWeek = 'Thursday';
+    } else if(day === 5) {
+        dayOfWeek = 'Friday';
+    } else if(day === 6) {
+        dayOfWeek = 'Saturday';
+    }
+    return dayOfWeek;
+}
+// Calling the function to choose a day of the week.
+getDay(randNum);
+
+// Created an object to get a motivational message based on what day of the week it is!
+const message = {
+        monday: 'Today is the first day of a successful week! Start off strong.',
+        tuesday: 'You had a great start to the week yesterday! Keep going strong!',
+        wednesday: 'Today is humpday. Only two more days in the week! Keep at it!',
+        thursday: 'It\'s Friday eve! Only one more day.',
+        friday: 'Finally it is Friday! Finish off the week strong!',
+        saturday: 'You worked hard all week! Today you get to kick your feet up and relax, you\'ve earned it!',
+        sunday: 'Time to get ready for another week of getting things done!'
+}
+function motivationalMessage(currentDay) {
+    currentDay = dayOfWeek;
+    if (currentDay === 'Sunday') {
+        return message.sunday;
+    } else if (currentDay === 'Monday') {
+        return message.monday;
+    } else if (currentDay === 'Tuesday') {
+        return message.tuesday;
+    } else if (currentDay === 'Wednesday') {
+        return message.wednesday;
+    } else if (currentDay === 'Thursday') {
+        return message.thursday;
+    } else if (currentDay === 'Friday') {
+        return message.friday;
+    } else if (currentDay === 'Saturday') {
+        return message.saturday
+    }
+}
+
+
 
 // Created a variable chosen joke which will hold the joke that is chosen
 let chosenJoke;
@@ -34,6 +89,7 @@ function getJoke(randNum) {
     }
  
 }
+getJoke(randNum);
 
 function firstReply() {
    return chosenJoke[0];
@@ -47,8 +103,13 @@ function reply() {
 function punchline() {
     return chosenJoke[1];
 }
+
+//console.log(dayOfWeek);
+
 function wholeJoke() {
-    getJoke(randNum);
-    console.log(`Me: Knock Know! \nYou: Whose there? \nMe: ${firstReply()}\nYou: ${reply()}\nMe: ${punchline()}\n`)
+
+    console.log(`Today is ${dayOfWeek}. The joke of the day is: `)
+    console.log(`Knock Knock! Whose there? ${firstReply()}. ${reply()} ${punchline()}`)
+    console.log(motivationalMessage(dayOfWeek));
 }
 wholeJoke();

@@ -1,39 +1,54 @@
-const joke1a = 'Harry';
-const joke1b = 'Harry up and open the door!';
-const joke2a = 'Nana';
-const joke2b = 'Nana your business';
-const joke3a = 'Hatch';
-const joke3b = 'God bless you';
-const joke4a = 'Luttuce';
-const joke4b = 'Lettuce in it\'s cold out here!';
-
-const firstResponse = [joke1a, joke2a, joke3a, joke4a];
-const punchline = [joke1b, joke2b, joke3b, joke4b];
-
-function knockknock() {
-    console.log('Knock Knock!');
+// Put jokes inside of an object
+let jokes = {
+    joke1: ['Harry', 'Harry up and open the door!'],
+    joke2: ['Nana', 'Nana your business.'],
+    joke3: ['Atch', 'God bless you.'],
+    joke4: ['Lettuce', 'Lettuce in it\'s cold out here!'],
+    joke5: ['Boo', 'Why are you crying?'],
+    joke6: ['Cows go', 'No, cows go Moo!'],
+    joke7: ['Iam', 'I You don\'t know who you are?']
 }
 
-function whothere() {
-    console.log('Who\'s there?')
-}
+// Make a random number to be able to choose a joke
+let randNum = Math.floor(Math.random() * 7)
 
-function firstAnswer() {
-    for (let i = 0; i < firstResponse.length; i++) {
-        console.log(firstResponse[i]);
+// Created a variable chosen joke which will hold the joke that is chosen
+let chosenJoke;
+
+// Created a function to assign a joke to the chosenJoke variable based on what the random number was
+function getJoke(randNum) {
+    if (randNum === 0) {
+        chosenJoke = jokes.joke1;
+    } else if (randNum === 1) {
+        chosenJoke = jokes.joke2;
+    } else if ( randNum === 2) {
+        chosenJoke = jokes.joke3;
+    } else if (randNum === 3) {
+        chosenJoke = jokes.joke4;
+    } else if (randNum === 4) {
+        chosenJoke = jokes.joke5;
+    } else if (randNum === 5) {
+        chosenJoke = jokes.joke6;
+    } else if(randNum === 6) {
+        chosenJoke = jokes.joke7;
     }
+ 
+}
+
+function firstReply() {
+   return chosenJoke[0];
+}
+
+function reply() {
+    return chosenJoke[0] + ' who?';
 }
 
 
-
-
-
-
-
-
-
-
-//knockknock();
-//whothere();
-//console.log(jokesArr);
-firstAnswer();
+function punchline() {
+    return chosenJoke[1];
+}
+function wholeJoke() {
+    getJoke(randNum);
+    console.log(`Me: Knock Know! \nYou: Whose there? \nMe: ${firstReply()}\nYou: ${reply()}\nMe: ${punchline()}\n`)
+}
+wholeJoke();
